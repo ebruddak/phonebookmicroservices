@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -9,8 +9,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\PhoneBook.Shared\PhoneBook.Shared.csproj" />
     <ProjectReference Include="..\PhoneBook.Services.Report.Domain\PhoneBook.Services.Report.Domain.csproj" />
     <ProjectReference Include="..\PhoneBook.Services.Report.Infrastructure\PhoneBook.Services.Report.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Queries\" />
   </ItemGroup>
 
 </Project>

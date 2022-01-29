@@ -21,8 +21,8 @@ namespace PhoneBook.Services.Report.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Domain.Report>().ToTable("Reports", DEFAULT_SCHEMA);
-            modelBuilder.Entity<ReportItem>().ToTable("ReportItems", DEFAULT_SCHEMA);
+            //modelBuilder.Entity<Domain.Report>().ToTable("Reports", DEFAULT_SCHEMA);
+            //modelBuilder.Entity<ReportItem>().ToTable("ReportItems", DEFAULT_SCHEMA);
 
             base.OnModelCreating(modelBuilder);
         }
