@@ -9,7 +9,6 @@ namespace PhoneBook.Services.Report.Domain
 {
     public class Report:Entity,IAggregateRoot
     {
-        public string UUID { get; set; }
         public DateTime RequestTime { get; private set; }
         public DateTime CreatedTime { get; private set; }
 
