@@ -5,13 +5,16 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using PhoneBook.Services.MsPerson.Services;
+using PhoneBook.Services.MsPerson.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PhoneBook.Services.Person
+namespace PhoneBook.Services.MsPerson
 {
     public class Startup
     {
@@ -26,10 +29,22 @@ namespace PhoneBook.Services.Person
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddScoped<IPersonService,PersonService>();
+            services.AddScoped<IContactInfoService, ContactInfoService>();
+
+
+            services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
+
+            //options pattern
+            services.Configure<DatabaseSettings>(Configuration.GetSection("DatabaseSettings"));
+            services.AddSingleton<IDatabaseSettings>(sp =>
+            {
+                return sp.GetRequiredService<IOptions<DatabaseSettings>>().Value;
+            });
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "PhoneBook.Services.Person", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "PhoneBook.Services.MsPerson", Version = "v1" });
             });
         }
 
@@ -40,7 +55,7 @@ namespace PhoneBook.Services.Person
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PhoneBook.Services.Person v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PhoneBook.Services.MsPerson v1"));
             }
 
             app.UseRouting();

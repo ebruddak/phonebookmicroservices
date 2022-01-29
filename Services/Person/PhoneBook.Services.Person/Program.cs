@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PhoneBook.Services.Person
+namespace PhoneBook.Services.MsPerson
 {
     public class Program
     {
