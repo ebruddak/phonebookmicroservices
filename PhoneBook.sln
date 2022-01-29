@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{62
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Person", "Person", "{EB3FA60C-E6F0-4C5B-8317-C2283D3385D3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.Services.Person", "Services\Person\PhoneBook.Services.Person\PhoneBook.Services.Person.csproj", "{770119D6-8BCA-4540-A2E6-6817D6A6ADD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBook.Services.MsPerson", "Services\Person\PhoneBook.Services.Person\PhoneBook.Services.MsPerson.csproj", "{770119D6-8BCA-4540-A2E6-6817D6A6ADD2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{986DA4A3-9D2A-4F5E-9972-93F1A61198DA}"
 EndProject

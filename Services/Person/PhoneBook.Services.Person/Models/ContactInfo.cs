@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace PhoneBook.Services.Person.Models
+namespace PhoneBook.Services.MsPerson.Models
 {
     public class ContactInfo
     {

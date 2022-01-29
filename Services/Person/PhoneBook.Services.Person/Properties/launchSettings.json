@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "PhoneBook.Services.Person": {
+    "PhoneBook.Services.MsPerson": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": false,

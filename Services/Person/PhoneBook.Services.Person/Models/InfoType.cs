@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PhoneBook.Services.Person.Models
+namespace PhoneBook.Services.MsPerson.Models
 {
     public class InfoType
     {
