@@ -309,7 +309,10 @@
         },
         "runtime": {
           "bin/placeholder/PhoneBook.Shared.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },

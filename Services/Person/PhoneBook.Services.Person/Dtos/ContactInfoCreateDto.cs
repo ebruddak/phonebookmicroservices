@@ -7,5 +7,8 @@ namespace PhoneBook.Services.MsPerson.Dtos
 {
     public class ContactInfoCreateDto
     {
+        public string PersonID { get; set; }
+        public InfoTypeDto Type { get; set; }
+        public string Content { get; set; }
     }
 }
