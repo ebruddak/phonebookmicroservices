@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PhoneBook.Services.Report.Domain.Core\PhoneBook.Services.Report.Domain.Core.csproj" />
+  </ItemGroup>
+
+</Project>
