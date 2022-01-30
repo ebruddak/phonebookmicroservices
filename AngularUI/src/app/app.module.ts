@@ -1,23 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './shared/material/material.module';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import {
-  MatButtonModule
-} from '@angular/material/button';
-import {
-  MatIconModule
-} from '@angular/material/icon';
-
 import { AppComponent } from './app.component';
 import { PersonsComponent } from './pages/persons/persons.component';
-
+import { AppRoutingModule } from './app-routing.module';
 import { PersonsService } from './persons.service';
-
-const routes: Routes = [
-  { path: '', component: PersonsComponent },
-  { path: 'persons', component: PersonsComponent },
-];
 
 @NgModule({
   declarations: [
@@ -27,11 +15,10 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes),
-    MatButtonModule,
-    MatIconModule
+    MaterialModule,
+    AppRoutingModule
   ],
   providers: [PersonsService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+  export class AppModule { }
