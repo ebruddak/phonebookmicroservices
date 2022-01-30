@@ -15,6 +15,6 @@ namespace PhoneBook.Services.Report.Application.Dtos
         public bool Status { get;  set; }
         public string ReportUrl { get;  set; }
 
-        public List<ReportItemDto> ReportItems { get;  set; }
+        public List<ReportItemDto>? ReportItems { get;  set; }
     }
 }

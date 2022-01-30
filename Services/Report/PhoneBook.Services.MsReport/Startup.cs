@@ -46,6 +46,12 @@ namespace PhoneBook.Services.MsReport
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ReportDbContext context)
         {
+            app.UseCors(builder =>
+            {
+                builder.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+            });
             if (env.IsDevelopment())
             {
                 context.Database.EnsureCreated();

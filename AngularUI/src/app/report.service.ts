@@ -19,20 +19,12 @@ export class ReportService{
 
   public getReports() 
   {
- 
     return  this.httpModule.get<ReportDto[]>(this.url,httpOptions);
         
   }
 
-  public getUserInfos(id : string): Observable<any>{
-    debugger;
-    let url_ = "http://localhost:5012/api/Reports/";
-    var url  = url_ +id
-    return this.httpModule.get<ReportDto[]>(url,httpOptions)
-    
-  }    
     public addReport(model : ReportDto){
-      debugger
+        debugger;
        let url_ = "http://localhost:5012/api/Reports";
        const content_ = JSON.stringify(model);
       this.httpModule.post<string>(url_, content_,httpOptions);

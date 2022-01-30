@@ -17,7 +17,13 @@ export interface InfoTypeDto {
 }
 export interface ReportDto {
     requestTime: Date,
-    createdTime: Date,
+    createdTime?: Date,
     status: boolean,
-    reportUrl:string
+    reportUrl:string,
+    reportItems:[]
+}
+export interface ReportItemDto {
+    location:string,
+    personCount:number,
+    phoneNumberCount:number
 }

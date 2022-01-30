@@ -27,6 +27,7 @@ namespace PhoneBook.Services.Report.Application.Handlers
          
             Domain.Report newReport = new Domain.Report(request.Status, request.ReportUrl,request.CreatedTime);
 
+
             request.ReportItems.ForEach(x =>
             {
                 newReport.AddReportItem(x.Location, x.PersonCount, x.PhoneNumberCount);
