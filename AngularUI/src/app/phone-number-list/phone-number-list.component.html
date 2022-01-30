@@ -1,0 +1,209 @@
+<div class="absolute inset-0 flex flex-col overflow-y-auto bg-slate-200 pl-60 pr-60 pt-20 pb-20">
+
+    <div class="flex flex-row min-h-full drop-shadow-lg">
+
+        <div class="flex flex-col flex-auto bg-card shadow rounded-md text-white bg-slate-300 p-10 mr-3">
+            <div class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 dark:bg-transparent">
+                <div class="flex-1 min-w-0">
+                    <div class="mt-2">
+                        <div
+                            class="text-slate-800 drop-shadow-lg text-4xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                            Telefon Rehberi
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-shrink-0 items-center sm:mt-0 sm:ml-4">
+                    <button class="ml-3 drop-shadow-lg bg-opacity-75 text-base bg-gray-200" mat-flat-button
+                        (click)="gotoReport()">
+                        Rapor Talepleri
+                        <mat-icon>report</mat-icon>
+                    </button>
+                </div>
+                <div class="flex flex-shrink-0 items-center sm:mt-0 sm:ml-4">
+                    <button class="ml-3 drop-shadow-lg bg-opacity-75 text-base bg-gray-200" mat-flat-button
+                        (click)="savePerson()">
+                        Yeni Kişi Ekle
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+            </div>
+
+
+
+            <ng-container *ngIf="dataSource && dataSource.data.length > 0; else noItems" class="">
+                <form name="phoneBookFilterForm" [formGroup]="phoneBookFilterForm">
+                    <div class="flex flex-col sm:flex-row items-center
+                        w-full max-w-xs sm:max-w-none">
+                        <mat-form-field appearance="outline" class="fuse-mat-no-subscript w-full sm:w-72 mt-4 sm:mt-0">
+                            <mat-label class="text-slate-900/50 font-bold ml-2">Ara</mat-label>
+                            <input class="lg:pl-3" formControlName="search" class="text-slate-900/50"
+                                (keyup)="search($event.target.value)" placeholder="Kişi arayın" matInput #query>
+                        </mat-form-field>
+                    </div>
+                </form>
+
+                <table mat-table [dataSource]="dataSource.data" matSort class="bg-slate-100/0 cursor-pointer"
+                    [multiTemplateDataRows]="true">
+                    <ng-container matColumnDef="avatar">
+                        <th mat-header-cell *matHeaderCellDef class="w-20"></th>
+                        <td mat-cell *matCellDef="let person" class="">
+                            <div class="relative flex flex-0 items-center justify-center w-13 h-13 mt-2 mb-2 mr-4">
+                                <ng-container>
+                                    <img class="w-full h-full rounded-full object-cover"
+                                        src="assets/images/male-19.jpg" />
+                                </ng-container>
+                            </div>
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-slate-900 font-medium">
+                            Ad </th>
+
+                        <td mat-cell *matCellDef="let person" class="text-slate-900 font-medium text-lg">
+                            {{person.surname}}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="surname">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-slate-900 font-medium">
+                            Soyad </th>
+
+                        <td mat-cell *matCellDef="let person" class="text-slate-900 font-medium text-lg">
+                            {{person.surname}}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="company">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-slate-900 font-medium">
+                            Firma Bilgisi </th>
+
+                        <td mat-cell *matCellDef="let person" class="text-slate-900 font-medium text-lg">
+                            {{person.company}}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="deleteEmployee">
+                        <th mat-header-cell *matHeaderCellDef> Kişiyi Sil </th>
+                        <td mat-cell *matCellDef="let element">
+                            <button mat-icon-button color="primary" (click)="deletePerson()"
+                                aria-label="Example icon button with a home icon">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="addInfo">
+                        <th mat-header-cell *matHeaderCellDef> İletişim Bilgisi Ekle </th>
+                        <td mat-cell *matCellDef="let element">
+                            <button mat-icon-button color="primary" (click)="addPersonInfo()"
+                                aria-label="Example icon button with a home icon">
+                                <mat-icon>add</mat-icon>
+                            </button>
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectPerson(row)">
+                </table>
+
+            </ng-container>
+
+            <ng-template #noItems>
+                <div
+                    class="flex flex-auto flex-col items-center justify-center bg-gray-100 text-slate-800/50 dark:bg-transparent mt-10">
+                    <div class="mt-4 text-2xl font-semibold tracking-tight text-secondary">
+                        Kişi kayıtlı değil
+                    </div>
+                </div>
+            </ng-template>
+
+
+        </div>
+
+
+        <div class="grid grid-cols-1 w-1/3 bg-card shadow rounded-md text-white bg-slate-800 p-10 drop-shadow-2xl">
+            <ng-container *ngIf="selectedPerson!=null">
+                <div *ngIf="selectedPerson!=undefined">
+
+                    <div class="relative w-13 h-13 mt-2 mb-2 mr-4 flex justify-center">
+                        <img class="flex justify-center shadow w-30 h-30 rounded-full object-cover drop-shadow-lg"
+                            src="assets/images/male-19.jpg" />
+                    </div>
+
+                    <div class="flex items-center font-semibold text-lg justify-center">
+                        {{selectedPerson.name}} {{selectedPerson.surname}}
+                    </div>
+
+                    <div class="items-center font-medium text-base flex justify-center">
+                        {{selectedPerson.company}}
+                    </div>
+
+                    <ng-container class="flex items-center font-semibold text-lg justify-center"
+                        *ngIf="dataSourceInfo && dataSourceInfo.data.length > 0; else noItemsInfo" class="">
+
+                        <table mat-table style="background-color: #4b545e;width: 100%;"
+                            [dataSource]="dataSourceInfo.data" matSort class="cursor-pointer mt-2"
+                            [multiTemplateDataRows]="true">
+
+
+                            <ng-container matColumnDef="phoneNumber">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-white font-small">
+                                    Telefon </th>
+
+                                <td mat-cell *matCellDef="let person" class="text-white font-medium text-xs">
+                                    {{person.type.phoneNumber}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="email">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-white font-small">
+                                    Eposta</th>
+
+                                <td mat-cell *matCellDef="let person" class="text-white font-medium text-xs">
+                                    {{person.type.email}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="address">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-white font-small">
+                                    Adres </th>
+
+                                <td mat-cell *matCellDef="let person" class="text-white font-medium text-xs">
+                                    {{person.type.address}}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="deleteInfo">
+                                <th mat-header-cell *matHeaderCellDef class="text-white font-small"> Sil </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <button mat-icon-button color="text-white" (click)="deleteContactInfo()"
+                                        id="person.id" aria-label="Example icon button with a home icon">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumnsInfo"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumnsInfo;"
+                                (click)="selectContactInfo(row)">
+                        </table>
+
+                    </ng-container>
+
+                    <ng-template #noItemsInfo>
+                        <div
+                            class="flex flex-auto flex-col items-center justify-center bg-gray-100 text-slate-800/50 dark:bg-transparent mt-10">
+                            <div class="mt-4 text-sm font-semibold tracking-tight text-secondary">
+                                Kişinin iletişim bilgisi bulunmuyor.
+                            </div>
+                        </div>
+                    </ng-template>
+
+
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="selectedPerson==null" class="">
+                <div
+                    class="flex flex-auto flex-col items-center justify-center text-3xl decoration-double decoration-4 font-black overline decoration-wite-900">
+                    Microservices poc</div>
+            </ng-container>
+        </div>
+    </div>
+
+
+
+</div>

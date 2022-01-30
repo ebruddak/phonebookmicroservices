@@ -50,5 +50,18 @@ namespace PhoneBook.Services.MsPerson.Services
 
             return Response<PersonDto>.Success(_mapper.Map<PersonDto>(person), 200);
         }
+        public async Task<Response<NoContent>> DeleteAsync(string id)
+        {
+            var result = await _personCollection.DeleteOneAsync(x => x.UUID == id);
+
+            if (result.DeletedCount > 0)
+            {
+                return Response<NoContent>.Success(204);
+            }
+            else
+            {
+                return Response<NoContent>.Fail("ContactInfo not found", 404);
+            }
+        }
     }
 }

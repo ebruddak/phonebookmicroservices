@@ -14,5 +14,7 @@ namespace PhoneBook.Services.MsPerson.Services
         Task<Response<PersonDto>> CreateAsync(PersonDto category);
 
         Task<Response<PersonDto>> GetByIdAsync(string id);
+        Task<Response<NoContent>> DeleteAsync(string id);
+
     }
 }

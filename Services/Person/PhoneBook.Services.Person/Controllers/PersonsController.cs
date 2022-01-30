@@ -38,10 +38,18 @@ namespace PhoneBook.Services.MsPerson.Controllers
             return CreateActionResultInstance(Person);
         }
 
+        [Route("/api/[controller]/Create")]
         [HttpPost]
         public async Task<IActionResult> Create(PersonDto PersonDto)
         {
             var response = await _personService.CreateAsync(PersonDto);
+
+            return CreateActionResultInstance(response);
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            var response = await _personService.DeleteAsync(id);
 
             return CreateActionResultInstance(response);
         }

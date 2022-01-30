@@ -14,8 +14,4 @@
     <ProjectReference Include="..\PhoneBook.Services.Report.Infrastructure\PhoneBook.Services.Report.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Queries\" />
-  </ItemGroup>
-
 </Project>

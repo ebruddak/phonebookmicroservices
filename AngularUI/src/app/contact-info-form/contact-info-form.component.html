@@ -1,0 +1,38 @@
+<div class=" p-5">
+    <div class="font-extrabold text-2xl text-green-600 mb-2">Yeni İletişim Bilgisi Ekle</div>
+
+    <mat-dialog-content class="text-lg mt-5">
+        <form name="newContactInfoForm" [formGroup]="newContactInfoForm" novalidate (ngSubmit)="saveContent()"
+            fxLayout="column">
+            <div class="flex flex-col">
+
+                <!-- FIRST NAME -->
+                <mat-form-field appearance="outline" class="text-base">
+                    <mat-label class="text-slate-900">Telefon</mat-label>
+                    <input class="text-slate-800" matInput formControlName="phoneNumber" placeholder="Telefon Numarası">
+                </mat-form-field>
+
+                <!-- LAST NAME -->
+                <mat-form-field appearance="outline" class="text-base">
+                    <mat-label class="text-slate-900">E-Posta</mat-label>
+                    <input class="text-slate-800" matInput formControlName="email" placeholder="E-Posta Adresi">
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="text-base">
+                    <mat-label class="text-slate-900">Adres</mat-label>
+                    <input class="text-slate-800" matInput formControlName="address" placeholder="Adresi">
+                </mat-form-field>
+
+            </div>
+
+            <div class="flex flex-row-reverse gap-3">
+                <button mat-button class="submit-button rounded-md border border-transparent shadow-sm bg-green-600">
+                    Kaydet </button>
+                <button mat-button mat-dialog-close mat-dialog-close="second"
+                    class="rounded-md border border-transparent text-black shadow-sm bg-gray-200 border-gray-300">
+                    İptal</button>
+            </div>
+
+        </form>
+    </mat-dialog-content>
+
+</div>
