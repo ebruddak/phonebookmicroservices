@@ -1,24 +1,43 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './shared/material/material.module';
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { PersonsComponent } from './pages/persons/persons.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { PersonsService } from './persons.service';
+import { AppComponent } from './app.component';
+import { PhoneNumberListComponent } from './phone-number-list/phone-number-list.component';
+import { PhoneNumberFormComponent } from './phone-number-form/phone-number-form.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { PhoneBookService } from '../app/phonebook.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PersonsComponent,
+    PhoneNumberListComponent,
+    PhoneNumberFormComponent
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
+    MatTableModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatIconModule,
+    MatIconModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatDialogModule,
     BrowserAnimationsModule,
-    MaterialModule,
-    AppRoutingModule
+    HttpClientModule
+    
   ],
-  providers: [PersonsService],
+  providers: [PhoneBookService],
   bootstrap: [AppComponent]
 })
-  export class AppModule { }
+export class AppModule { }

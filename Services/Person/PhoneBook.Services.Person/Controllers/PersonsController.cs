@@ -38,6 +38,7 @@ namespace PhoneBook.Services.MsPerson.Controllers
             return CreateActionResultInstance(Person);
         }
 
+        [Route("/api/[controller]/Create")]
         [HttpPost]
         public async Task<IActionResult> Create(PersonDto PersonDto)
         {
