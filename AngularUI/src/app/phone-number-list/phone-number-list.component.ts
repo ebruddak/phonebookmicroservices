@@ -6,6 +6,7 @@ import { ContactInfoDto, PhoneBookItem } from '../app.types';
 import { ContactInfoFormComponent } from '../contact-info-form/contact-info-form.component';
 import { PhoneNumberFormComponent } from '../phone-number-form/phone-number-form.component';
 import { PhoneBookService } from '../phonebook.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-phone-number-list',
@@ -25,8 +26,9 @@ export class PhoneNumberListComponent implements OnInit {
   constructor(
     private matDialog: MatDialog,
     private phoneBookService: PhoneBookService,
-    private formBuilder: FormBuilder
-
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -52,7 +54,9 @@ this.refreshData();
   });
 
 }
-
+gotoReport(){
+  this.router.navigate(['/reports']);
+}
 deleteContactInfo() {
   debugger
   this.phoneBookService.deleteContactInfo(this.selectedContactInfo.id);

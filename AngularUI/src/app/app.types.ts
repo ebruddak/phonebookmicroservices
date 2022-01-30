@@ -15,3 +15,9 @@ export interface InfoTypeDto {
     phoneNumber: string,
     email: string,
 }
+export interface ReportDto {
+    requestTime: Date,
+    createdTime: Date,
+    status: boolean,
+    reportUrl:string
+}

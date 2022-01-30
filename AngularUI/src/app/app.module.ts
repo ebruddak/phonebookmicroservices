@@ -12,16 +12,19 @@ import { AppComponent } from './app.component';
 import { PhoneNumberListComponent } from './phone-number-list/phone-number-list.component';
 import { PhoneNumberFormComponent } from './phone-number-form/phone-number-form.component';
 import { ContactInfoFormComponent } from './contact-info-form/contact-info-form.component';
+import { ReportsComponent } from './reports/reports.componenet';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { PhoneBookService } from '../app/phonebook.service';
+import { ReportService } from '../app/report.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     PhoneNumberListComponent,
     PhoneNumberFormComponent,
-    ContactInfoFormComponent
+    ContactInfoFormComponent,
+    ReportsComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,7 @@ import { PhoneBookService } from '../app/phonebook.service';
     HttpClientModule
     
   ],
-  providers: [PhoneBookService],
+  providers: [PhoneBookService,ReportService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
