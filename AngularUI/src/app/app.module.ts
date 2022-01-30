@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PhoneNumberListComponent } from './phone-number-list/phone-number-list.component';
 import { PhoneNumberFormComponent } from './phone-number-form/phone-number-form.component';
+import { ContactInfoFormComponent } from './contact-info-form/contact-info-form.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { PhoneBookService } from '../app/phonebook.service';
@@ -19,7 +20,8 @@ import { PhoneBookService } from '../app/phonebook.service';
   declarations: [
     AppComponent,
     PhoneNumberListComponent,
-    PhoneNumberFormComponent
+    PhoneNumberFormComponent,
+    ContactInfoFormComponent
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 import { map, Observable } from 'rxjs';
-import { PhoneBookItem } from './app.types';
+import { ContactInfoDto, PhoneBookItem } from './app.types';
 const httpOptions = {
   headers: new HttpHeaders({ 
     'Access-Control-Allow-Origin':'*',
@@ -23,10 +23,26 @@ export class PhoneBookService{
     return  this.httpModule.get<PhoneBookItem[]>(this.url,httpOptions);
         
   }
-    public delete(id : number): Observable<any>{
+
+  public GetUserInfos(id : string): Observable<any>{
+    debugger;
+    let url_ = "http://localhost:5011/api/ContactInfos/GetAllByUserId/";
+    var url  = url_ +id
+    return this.httpModule.get<ContactInfoDto[]>(url,httpOptions)
+    
+  }   
+    public delete(id : String): Observable<any>{
       
-      var url  = this.url +id
-      return this.httpModule.delete<PhoneBookItem>(url)
+      let url_ = "http://localhost:5011/api/Persons/";
+      var url  = url_ +id
+      return this.httpModule.delete(url,httpOptions)
+      
+    }   
+    public deleteContactInfo(id : String): Observable<any>{
+      
+      let url_ = "http://localhost:5011/api/ContactInfos/";
+      var url  = url_ +id
+      return this.httpModule.delete(url,httpOptions)
       
     }      
     public addPerson(model : PhoneBookItem){
@@ -34,10 +50,12 @@ export class PhoneBookService{
        let url_ = "http://localhost:5011/api/Persons/create";
        const content_ = JSON.stringify(model);
       this.httpModule.post<string>(url_, content_,httpOptions).subscribe(resonse=>console.log(resonse))
-
-
-
     }
 
-
+    public addContactInfo(model : ContactInfoDto){
+      debugger
+       let url_ = "http://localhost:5011/api/ContactInfos";
+       const content_ = JSON.stringify(model);
+      this.httpModule.post<string>(url_, content_,httpOptions).subscribe(resonse=>console.log(resonse))
+    }
   }

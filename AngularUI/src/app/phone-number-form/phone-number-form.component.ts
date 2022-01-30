@@ -21,6 +21,7 @@ export class PhoneNumberFormComponent implements OnInit {
   ngOnInit(): void {
 
     this.newPersonForm = this.formBuilder.group({
+      uuid: [''],
       name: [''],
       surname: [''],
       company: [''],
@@ -28,13 +29,12 @@ export class PhoneNumberFormComponent implements OnInit {
   }
 
   savePerson() {
-    debugger;
     const person: PhoneBookItem = {
+      uuid: this.newPersonForm.get('uuid')?.value,
       name: this.newPersonForm.get('name')?.value,
       surname: this.newPersonForm.get('surname')?.value,
       company: this.newPersonForm.get('company')?.value
     }
-debugger;
      this.phoneBookService.addPerson(person);
     this.dialogRef.close();
 
