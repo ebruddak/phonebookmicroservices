@@ -10,10 +10,10 @@ namespace PhoneBook.Services.Report.Domain
     public class Report:Entity,IAggregateRoot
     {
         public DateTime RequestTime { get; private set; }
-        public DateTime CreatedTime { get; private set; }
+        public DateTime CreatedTime { get;  set; }
 
-        public bool Status { get; private set; }
-        public string ReportUrl { get; private set; }
+        public bool Status { get;  set; }
+        public string ReportUrl { get;  set; }
 
         private readonly List<ReportItem> _reportItems;
         public IReadOnlyCollection<ReportItem> ReportItems => _reportItems;

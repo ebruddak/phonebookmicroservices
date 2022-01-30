@@ -25,7 +25,7 @@ namespace PhoneBook.Services.Report.Application.Handlers
         public async Task<Response<CreatedReportDto>> Handle(CreateReportCommand request, CancellationToken cancellationToken)
         {
          
-            Domain.Report newReport = new Domain.Report(request.Status, request.ReportUrl,request.CreatedTime);
+            Domain.Report newReport = new Domain.Report(request.Status, request.ReportUrl,request.RequestTime);
 
 
             request.ReportItems.ForEach(x =>

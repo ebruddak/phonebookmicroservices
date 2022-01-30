@@ -12,7 +12,7 @@ namespace PhoneBook.Services.Report.Application.Commands
     public class CreateReportCommand : IRequest<Response<CreatedReportDto>>
     {
 
-        public DateTime CreatedTime { get; set; }
+        public DateTime RequestTime { get; set; }
 
         public bool Status { get; set; }
         public string ReportUrl { get; set; }
