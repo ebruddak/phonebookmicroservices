@@ -13,6 +13,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MediatR;
+using MassTransit;
+using PhoneBook.Services.Report.Application.Consumers;
 
 namespace PhoneBook.Services.MsReport
 {
@@ -28,6 +30,26 @@ namespace PhoneBook.Services.MsReport
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMassTransit(x =>
+            {
+
+                x.AddConsumer<CreateReportRequestMessageCommandConsumer>();
+                x.UsingRabbitMq((context, cfg) =>
+                {
+                    cfg.Host(Configuration["RabbitMQUrl"], "/", host =>
+                    {
+                        host.Username("guest");
+                        host.Password("guest");
+                    });
+
+                    cfg.ReceiveEndpoint("report-request-service", e =>
+                    {
+                        e.ConfigureConsumer<CreateReportRequestMessageCommandConsumer>(context);
+                    });
+                });
+            });
+            services.AddMassTransitHostedService();
+
             services.AddDbContext<ReportDbContext>(opt =>
             {
                 opt.UseNpgsql(Configuration.GetConnectionString("PostgreSql"), configure =>
@@ -46,12 +68,7 @@ namespace PhoneBook.Services.MsReport
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ReportDbContext context)
         {
-            app.UseCors(builder =>
-            {
-                builder.AllowAnyOrigin()
-                    .AllowAnyHeader()
-                    .AllowAnyMethod();
-            });
+
             if (env.IsDevelopment())
             {
                 context.Database.EnsureCreated();

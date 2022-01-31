@@ -58,7 +58,6 @@ gotoReport(){
   this.router.navigate(['/reports']);
 }
 deleteContactInfo() {
-  debugger
   this.phoneBookService.deleteContactInfo(this.selectedContactInfo.id);
   this.phoneBookService.GetUserInfos(this.selectedPerson.uuid).subscribe(rs=> {
     this.dataSourceInfo =rs;   
@@ -81,7 +80,6 @@ deleteContactInfo() {
   }
   selectPerson(person: any) {
     this.selectedPerson = person;
-    debugger;
     this.phoneBookService.GetUserInfos(person.uuid).subscribe(a=> {
      this.dataSourceInfo =a;   
  });

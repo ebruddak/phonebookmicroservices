@@ -24,10 +24,7 @@ export class ReportsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.reportService.getReports().subscribe(a=> {
-        debugger;
-        this.dataSource =a;  
-    });
+  this.getReports();
   }
   addReport(){
     const report: ReportDto = {
@@ -37,12 +34,15 @@ export class ReportsComponent implements OnInit {
         reportItems:[]
       }
     this.reportService.addReport(report);
-    // this.reportService.getReports().subscribe(a=> {
-    //     debugger;
-    //     this.dataSource =a;  
-    // });
+    this.getReports();
+
   }
   gotoPersons(){
     this.router.navigate(['/persons']);
+  }
+  getReports(){
+    this.reportService.getReports().subscribe(a=> {
+      this.dataSource =a;  
+  });
   }
 }
