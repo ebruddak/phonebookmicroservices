@@ -10,7 +10,7 @@ http://localhost:4200
 Backend
 
 ```sh
-http://localhost:500
+http://localhost:5000
 ```
 
 ## Mimari Yapı
