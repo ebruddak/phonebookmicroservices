@@ -25,7 +25,7 @@ namespace PhoneBook.Services.MsReport.Controllers
             _mediator = mediator;
             _sendEndpointProvider = sendEndpointProvider;
         }
-
+        [Route("/api/[controller]/AddReport")]
         [HttpPost]
         public async Task<IActionResult> AddReportRequest(CreateReportCommand createReportCommand)
         {

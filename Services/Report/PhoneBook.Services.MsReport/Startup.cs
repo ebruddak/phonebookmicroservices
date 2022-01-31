@@ -69,12 +69,6 @@ namespace PhoneBook.Services.MsReport
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ReportDbContext context)
         {
 
-            app.UseCors(builder =>
-            {
-                builder.AllowAnyOrigin()
-                    .AllowAnyHeader()
-                    .AllowAnyMethod();
-            });
             if (env.IsDevelopment())
             {
                 context.Database.EnsureCreated();
