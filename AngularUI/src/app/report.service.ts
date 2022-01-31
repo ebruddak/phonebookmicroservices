@@ -15,19 +15,16 @@ const httpOptions = {
 export class ReportService{
   
   constructor(private httpModule : HttpClient) { }
-  private url  = "http://localhost:5012/api/Reports"
+  private url  = "http://localhost:5000/services/report/reports"
 
   public getReports() 
   {
     return  this.httpModule.get<ReportDto[]>(this.url,httpOptions);
         
   }
-
     public addReport(model : ReportDto){
-        debugger;
-       let url_ = "http://localhost:5012/api/Reports";
        const content_ = JSON.stringify(model);
-      this.httpModule.post<string>(url_, content_,httpOptions);
+      this.httpModule.post<string>(this.url, content_,httpOptions);
     }
 
   }

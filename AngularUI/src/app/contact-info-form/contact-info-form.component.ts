@@ -32,7 +32,6 @@ export class ContactInfoFormComponent implements OnInit {
   }
 
   saveContent() {
-    debugger;
     const contactInfo: ContactInfoDto = {
    
       type: {
