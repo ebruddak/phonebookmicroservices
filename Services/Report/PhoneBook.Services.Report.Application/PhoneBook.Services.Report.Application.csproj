@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.0" />
+    <PackageReference Include="MassTransit" Version="7.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\PhoneBook.Shared\PhoneBook.Shared.csproj" />
+    <ProjectReference Include="..\PhoneBook.Services.Report.Domain\PhoneBook.Services.Report.Domain.csproj" />
+    <ProjectReference Include="..\PhoneBook.Services.Report.Infrastructure\PhoneBook.Services.Report.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

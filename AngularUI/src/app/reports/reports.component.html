@@ -1,0 +1,90 @@
+<div class="absolute inset-0 flex flex-col overflow-y-auto bg-slate-200 pl-60 pr-60 pt-20 pb-20">
+
+    <div class="flex flex-row min-h-full drop-shadow-lg">
+
+        <div class="flex flex-col flex-auto bg-card shadow rounded-md text-white bg-slate-300 p-10 mr-3">
+            <div class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 dark:bg-transparent">
+                <div class="flex-1 min-w-0">
+                    <div class="mt-2">
+                        <div
+                            class="text-slate-800 drop-shadow-lg text-4xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                            Telefon Rehberi
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-shrink-0 items-center sm:mt-0 sm:ml-4">
+                    <button class="ml-3 drop-shadow-lg bg-opacity-75 text-base bg-gray-200" (click)="gotoPersons()"
+                        mat-flat-button>
+                        Telefon Rehberi
+                        <mat-icon>home</mat-icon>
+                    </button>
+                </div>
+                <div class="flex flex-shrink-0 items-center sm:mt-0 sm:ml-4">
+                    <button class="ml-3 drop-shadow-lg bg-opacity-75 text-base bg-gray-200" mat-flat-button
+                        (click)="addReport()">
+                        Yeni Rapor Talebi Oluştur
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+            </div>
+
+
+            <ng-container *ngIf="dataSource && dataSource.data.length > 0; else noItems" class="">
+
+                <table mat-table [dataSource]="dataSource.data" matSort class="bg-slate-100/0 cursor-pointer"
+                    [multiTemplateDataRows]="true">
+                    <ng-container matColumnDef="requestTime">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-slate-900 font-medium">
+                            Talep Tarihi </th>
+
+                        <td mat-cell *matCellDef="let rp" class="text-slate-900 font-medium text-lg">
+                            {{rp.requestTime}}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="createdTime">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-slate-900 font-medium">
+                            Gerçekleşme Tarihi </th>
+
+                        <td mat-cell *matCellDef="let rp" class="text-slate-900 font-medium text-lg">
+                            {{rp.createdTime}}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="status">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-slate-900 font-medium">
+                            Durum </th>
+
+                        <td mat-cell *matCellDef="let rp" class="text-slate-900 font-medium text-lg">
+                            {{rp.status}}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="reportUrl">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-slate-900 font-medium">
+                            Rapor Linki </th>
+
+                        <td mat-cell *matCellDef="let rp" class="text-slate-900 font-medium text-lg">
+                            {{rp.reportUrl}}
+                        </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                </table>
+
+            </ng-container>
+
+            <ng-template #noItems>
+                <div
+                    class="flex flex-auto flex-col items-center justify-center bg-gray-100 text-slate-800/50 dark:bg-transparent mt-10">
+                    <div class="mt-4 text-2xl font-semibold tracking-tight text-secondary">
+                        Rapor talebi bulunmuyor.
+                    </div>
+                </div>
+            </ng-template>
+
+
+        </div>
+
+    </div>
+
+
+
+</div>
