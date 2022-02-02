@@ -43,7 +43,8 @@ Client Projesi Angular13 kullanılarak, material UI kütüphanesiyle yazılmış
  -Ocelot
  -MassTransit
  -Docker
-EntittyFramework
+ -EntittyFramework
+ -xunit
 
 ## Ekran Görüntüleri
 
